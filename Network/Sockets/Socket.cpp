@@ -8,7 +8,7 @@ Network::Socket::Socket(int domain, int service, int protocol, int port, unsigne
 
 	// Establishing connection
 	// Establishing socket
-	int sock = socket(domain, service, protocol);
+	sock = socket(domain, service, protocol);
 	int reuse = 1;
 	setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse));
 	setsockopt(sock, SOL_SOCKET, SO_REUSEPORT, (const char*)&reuse, sizeof(reuse));
