@@ -22,10 +22,13 @@ namespace Network {
 		virtual int connect_to_network(int sock, struct sockaddr_in address) = 0;
 		// Test the network connectino
 		void test_connection(int);
-		// Incapsulation and getters
+		// Incapsulation
+		// Getters
 		struct sockaddr_in get_address();
 		int get_sock();
 		int get_connection();
+		// Setters
+		void set_connection(int);
 	};
 }
 
