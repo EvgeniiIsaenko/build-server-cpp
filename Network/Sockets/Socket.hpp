@@ -7,6 +7,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <iostream>
+#include <cstring>
 
 // namespace socket
 namespace Network {
@@ -14,7 +15,6 @@ namespace Network {
 	private:
 		struct sockaddr_in address;
 		int sock;
-		int connection;
 	public:
 		// constructor
 		Socket(int domain, int service, int protocol, int port, unsigned long interface);
@@ -22,10 +22,10 @@ namespace Network {
 		virtual void connect_to_network(int sock, struct sockaddr_in address) = 0;
 		// Test the network connectino
 		void test_connection(int);
-		// Incapsulation and getters
+		// Incapsulation
+		// Getters
 		struct sockaddr_in get_address();
 		int get_sock();
-		int get_connection();
 	};
 }
 
