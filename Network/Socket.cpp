@@ -10,10 +10,6 @@ Network::Socket::Socket(int domain, int service, int protocol, int port, unsigne
 	// Establishing socket
 	int sock = socket(domain, service, protocol);
 	test_connection(sock);
-
-	//Establishing connection itself
-	connection = connect_to_network(sock, address);
-	test_connection(connection);
 }
 
 // Test the connection TODO: maybe change this
@@ -35,4 +31,10 @@ int Network::Socket::get_sock() {
 
 int Network::Socket::get_connection() {
 	return connection;
+}
+
+// Setters
+void Network::Socket::set_connection(int _connection)
+{
+	connection = _connection;
 }

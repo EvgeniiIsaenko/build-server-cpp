@@ -19,7 +19,7 @@ namespace Network {
 		// constructor
 		Socket(int domain, int service, int protocol, int port, unsigned long interface);
 		// Connects to the network
-		virtual void connect_to_network(int sock, struct sockaddr_in address) = 0;
+		virtual int connect_to_network(int sock, struct sockaddr_in address) = 0;
 		// Test the network connectino
 		void test_connection(int);
 		// Incapsulation and getters
