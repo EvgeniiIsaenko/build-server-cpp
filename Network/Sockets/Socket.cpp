@@ -9,11 +9,16 @@ Network::Socket::Socket(int domain, int service, int protocol, int port, unsigne
 	// Establishing connection
 	// Establishing socket
 	int sock = socket(domain, service, protocol);
+	int reuse = 1;
+	setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse));
+	setsockopt(sock, SOL_SOCKET, SO_REUSEPORT, (const char*)&reuse, sizeof(reuse));
+	std::cout << "Testing Socket" << std::endl;
 	test_connection(sock);
 }
 
 // Test the connection TODO: maybe change this
 void Network::Socket::test_connection(int to_test) {
+	std::cout << "in test connection " << to_test << std::endl;
 	if (to_test < 0) {
 		perror("Connection failed");
 		exit(EXIT_FAILURE);
@@ -27,14 +32,4 @@ struct sockaddr_in Network::Socket::get_address() {
 
 int Network::Socket::get_sock() {
 	return sock;
-}
-
-int Network::Socket::get_connection() {
-	return connection;
-}
-
-// Setters
-void Network::Socket::set_connection(int _connection)
-{
-	connection = _connection;
 }

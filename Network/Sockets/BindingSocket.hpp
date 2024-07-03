@@ -6,11 +6,13 @@
 
 namespace Network {
     class BindingSocket : public Socket {
+    private:
+        int binding;
     public:
         // Constructor
-        BindingSocket(int domain, int service, int protocol, int port, unsigned long interface) : Socket(domain, service, protocol, port, interface) {}; // TODO: this might not work
+        BindingSocket(int domain, int service, int protocol, int port, unsigned long interface);
         // Virtual function
-        int connect_to_network(int sock, struct sockaddr_in address);
+        void connect_to_network(int sock, struct sockaddr_in address);
     }; 
 }
 

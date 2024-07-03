@@ -6,11 +6,13 @@
 
 namespace Network {
     class ConnectingSocket : public Socket {
+    private:
+        int connecting;
     public:
         // Constructor
         ConnectingSocket(int domain, int service, int protocol, int port, unsigned long interface);
         // Virtual function
-        int connect_to_network(int sock, struct sockaddr_in address);
+        void connect_to_network(int sock, struct sockaddr_in address);
     };
 }
 
